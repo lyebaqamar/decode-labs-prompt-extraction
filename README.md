@@ -1,6 +1,6 @@
 # Zero-Shot & Few-Shot Structured Data Extraction Engine
 
-A deterministic extraction compiler that constrains Large Language Models (LLMs) to convert messy customer-service text into strict, production-grade JSON records that follow a 5-field schema. This repository contains an implementation for Project 1 — Zero-Shot & Few-Shot Data Extraction (DecodeLabs - Batch 2026).
+A deterministic extraction compiler that constrains Large Language Models (LLMs) to convert messy customer-service text into strict, production-grade JSON records that follow a 5-field schema. This repository contains an implementation for Project 1 Zero-Shot & Few-Shot Data Extraction (DecodeLabs - Batch 2026).
 
 ## Highlights / Goals
 - Produce reliable, schema-compliant JSON from noisy, adversarial, or ambiguous customer messages.
@@ -9,17 +9,17 @@ A deterministic extraction compiler that constrains Large Language Models (LLMs)
 
 ## Key Features
 - System Prompt (Static Prefix)
-  - A static system prompt (prompts/extraction_system_prompt.txt) with strong operational constraints and two high-quality few-shot examples to improve consistency and leverage prefix-caching.
+- A static system prompt (prompts/extraction_system_prompt.txt) with strong operational constraints and two high-quality few-shot examples to improve consistency and leverage prefix-caching.
 - XML Security Fencing
-  - Dynamic inputs are wrapped in `<unstructured_data>` tags to isolate data and mitigate prompt-injection or adversarial payloads.
+- Dynamic inputs are wrapped in `<unstructured_data>` tags to isolate data and mitigate prompt-injection or adversarial payloads.
 - Double Verification Pipeline
-  - A two-stage verification in `src/extractor.py`: 
+- A two-stage verification in `src/extractor.py`: 
     1) Key completeness checks, then
     2) Pydantic-based validation for enums, ranges, and types (schemas/ticket_schema.py).
 - Self-Correction (Repair Loop)
-  - A simulation/repair loop that traps parsing or schema validation errors and attempts deterministic rectification before returning a final payload.
+- A simulation/repair loop that traps parsing or schema validation errors and attempts deterministic rectification before returning a final payload.
 - Deterministic Extraction Compiler
-  - Forces consistent output shapes from LLMs so results can be consumed by downstream systems without additional manual cleanup.
+- Forces consistent output shapes from LLMs so results can be consumed by downstream systems without additional manual cleanup.
 
 ## Repository Structure
 
